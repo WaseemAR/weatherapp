@@ -14,57 +14,26 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### APPROACH
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Took the help of a third party API for fetching city name and it's lat & long from GeoDB Cities [RapidoApi](https://rapidapi.com/wirefreethought/api/geodb-cities/), as per the requirement of Openweathermap API, we will need the lattitude and longitude of the city.
 
-### `npm run build`
+this API provides the list of cities and are populated into a reactjs library for autosearch dropdown [react-select-async-paginate](https://www.npmjs.com/package/react-select-async-paginate)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+with the help of [openweathermap](https://openweathermap.org/current), selected city's weather forecast is displayed in to components based on the selected temperature type (F/C) 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. today's weather in a card component 
+2. timeframes followed by the next 7 days are displayed in a unordered list view component
+3. a checkbox for toggling between F and C
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Note: an `.env` file is required which will have the third party API keys and its value.**
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Time Taken to complete
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. It took me 1 and Half hour to visualize and complete the task, as the inital setup of the app took me to a setup issue which took me half hour to resolve it, as my PC ran to a Nodejs version and Path variable setup issue.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Another point was with selecting the API for getting lat & long by typing the city name. There were many API's, but GeoDB cities caught my eye, as it looked easy to get lat and long by name of the city, another interesting thing about it was we can get the cities having a minimum population set. we can get the cities only having so and so no of population, this was one thing that was cool about using the API.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. The forecast List of 7 frameworks is not working, According to the Openweather API, forcast list for daily 16days is not working as it throws and 401 error which is invalid API key error.
+to url is [16days](https://api.openweathermap.org/data/2.5/forecast/daily?lat=41.03508&lon=28.983311&cnt=7&appid={API_KEY}). Therfor to overcome this for now i have used the 7 records from the list and shown it for the forecast frame list of 7 days.
